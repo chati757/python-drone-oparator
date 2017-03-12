@@ -1,8 +1,22 @@
-#page component design
+#PAGE COMPONENT DESIGN
 
-intro page
+###intro page
 
-station page
+ -logo
+ 
+###station page
 
+ -station status
+ 
+ -drone paking
+  
+ -drone register
+ 
+ -plant register
+ 
+ -loadout register
+ 
+###operation page
 
-operation page
+ -monitor mode
+
