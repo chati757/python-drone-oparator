@@ -1,5 +1,7 @@
 # PYTHON-DRONE-OPERATOR
-**font setting in command prompt in window** 
+**font install and setting in command prompt in window** 
+
+    *recommend > FreeMono [font]
 
     get font and paste in C:\Windows\Fonts
 
