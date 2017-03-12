@@ -12,4 +12,8 @@
     
     new > string value > set value name > 00 > value data > fontname Ex.Consolas,FreeMono
     
+**command prompt full screen setting**
+
+    cmd > wmic > exit
+    
 ###LINUX VERSION
