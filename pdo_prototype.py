@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+#-*-coding: utf-8 -*-
 from unicurses import * 
 
 #-----------------------------------------initalize stage----------------------------------------------
@@ -33,10 +35,10 @@ def main():
     create_main_station()
     #-----------create position panel-----------
     create_main_position_panel()
-    create_sub_position_panel("01","T01","NAME01","xxx%","Maintenance","offline",0)
-    create_sub_position_panel("02","T02","NAME02","xxx%","Maintenance","offline",20)
-    create_sub_position_panel("03","T03","NAME03","xxx%","Maintenance","offline",40)
-    create_sub_position_panel("04","T04","NAME04","xxx%","Maintenance","offline",60)
+    create_sub_position_panel("01","T01","NAME01",("xxx"+" %"),"Maintenance","offline",0)
+    create_sub_position_panel("02","T02","NAME02",("xxx"+" %"),"Maintenance","offline",20)
+    create_sub_position_panel("03","T03","NAME03",("xxx"+" %"),"Maintenance","offline",40)
+    create_sub_position_panel("04","T04","NAME04",("xxx"+" %"),"Maintenance","offline",60)
 
     running = True
     while(running):
