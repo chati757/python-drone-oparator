@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+#-*-coding: utf-8 -*-
 from unicurses import * 
+from make_color import *
 
 #-----------------------------------------initalize stage----------------------------------------------
 stdscr = initscr() #start up screen and initalize ncurses
@@ -7,6 +10,12 @@ start_color()#default is white
 noecho()#not show txt when typing
 curs_set(False)#not show cursor
 keypad(stdscr,True)#register arrow key 
+
+#-----------------initialize color themes----------
+#default initialize color number
+YELLOWTEXT=new_color(COLOR_YELLOW,COLOR_BLACK)
+GREENLIGHT=new_color(COLOR_GREEN,COLOR_GREEN)
+REDLIGHT=new_color(COLOR_RED,COLOR_RED)
 
 #-----------------layout--------------------
 MAX_Y,MAX_X=getmaxyx(stdscr)
@@ -28,10 +37,10 @@ def main():
     #-------------------------------------------
     #-----------create position panel-----------
     create_main_position_panel()
-    create_sub_position_panel("01","T01","NAME01","xxx%","Maintenance","offline",0)
-    create_sub_position_panel("02","T02","NAME02","xxx%","Maintenance","offline",20)
-    create_sub_position_panel("03","T03","NAME03","xxx%","Maintenance","offline",40)
-    create_sub_position_panel("04","T04","NAME04","xxx%","Maintenance","offline",60)
+    create_sub_position_panel("01","T01","NAME01",("xxx"+" %"),"MAINTENANCE","offline",0)
+    create_sub_position_panel("02","T02","NAME02",("xxx"+" %"),"MAINTENANCE","offline",20)
+    create_sub_position_panel("03","T03","NAME03",("xxx"+" %"),"MAINTENANCE","offline",40)
+    create_sub_position_panel("04","T04","NAME04",("xxx"+" %"),"MAINTENANCE","offline",60)
 
     running = True
     while(running):
@@ -81,7 +90,7 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     window_sub_slot=newwin(20,20,0,0)
     box(window_sub_slot)
     wmove(window_sub_slot,1,2)
-    waddstr(window_sub_slot,"ID:"+id_data)
+    waddstr(window_sub_slot,"ID:"+id_data,color_pair(YELLOWTEXT))
     wmove(window_sub_slot,2,1)
     whline(window_sub_slot,ACS_HLINE,18)
     wmove(window_sub_slot,1,14)
@@ -99,11 +108,29 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     wmove(window_sub_slot,15,1)
     whline(window_sub_slot,ACS_HLINE,18)
     wmove(window_sub_slot,16,2)
+
     waddstr(window_sub_slot,status_data)
+    wmove(window_sub_slot,16,16)
+    if (status_data=="READY"):
+        waddstr(window_sub_slot,"  ",color_pair(GREENLIGHT))
+    elif ((status_data=="MAINTENANCE") or (status_data=="NOT READY")):
+        waddstr(window_sub_slot,"  ",color_pair(REDLIGHT))
+    else:
+        waddstr(window_sub_slot,"ERR")
+
     wmove(window_sub_slot,17,1)
     whline(window_sub_slot,ACS_HLINE,18)
+
     wmove(window_sub_slot,18,2)
     waddstr(window_sub_slot,conn_data)
+    wmove(window_sub_slot,18,16)
+    if (conn_data=="online"):
+        waddstr(window_sub_slot,"  ",color_pair(GREENLIGHT))
+    elif (conn_data=="offline"):
+        waddstr(window_sub_slot,"  ",color_pair(REDLIGHT))
+    else:
+        waddstr(window_sub_slot,"ERR")
+        
 
     #window_sub_slot_2=newwin(21,20,0,0)
     #box(window_sub_slot_2)
@@ -121,6 +148,15 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     #-------------panel update stage-----------
     update_panels()
     doupdate()
+
+def make_color(fg,bg):
+    global MAKE_COLOR_NUM
+
+    color_number = MAKE_COLOR_NUM
+    init_pair(color_number,fg,bg)
+    MAKE_COLOR_NUM +=1
+    
+    return MAKE_COLOR_NUM
 
 if(__name__=="__main__"):
     main()
