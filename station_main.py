@@ -5,6 +5,8 @@ from station_init import *
 from station_position import *
 from station_info import *
 from station_console import *
+from station_loadout import *
+from station_detail import *
 
 #-----------------main panel----------------
 MAIN_STATION_MARGIN_TOP=1
@@ -27,6 +29,10 @@ def main():
     create_main_information_panel()
     #-----------create station console-----------
     create_main_console_panel()
+    #-----------create station loadout-----------
+    create_main_loadout_panel()
+    #-----------create station detail------------
+    create_main_detail_panel()
 
     running = True
     while(running):
