@@ -2,6 +2,7 @@
 #-*-coding: utf-8 -*-
 from unicurses import * 
 from make_color import *
+from ascii_image import *
 
 #-----------------------------------------initalize stage----------------------------------------------
 stdscr = initscr() #start up screen and initalize ncurses
@@ -14,8 +15,9 @@ keypad(stdscr,True)#register arrow key
 
 #-----------------initialize color themes----------
 #default initialize color number
-GREENLIGHT=new_color(COLOR_GREEN,COLOR_GREEN)
-REDLIGHT=new_color(COLOR_RED,COLOR_RED)
+GREENLIGHT=new_color(2,2)
+REDLIGHT=new_color(12,12)
+YELLOWLIGHT=new_color(14,14)
 
 #-----------------layout--------------------
 MAX_Y,MAX_X=getmaxyx(stdscr)
@@ -29,3 +31,9 @@ POSITION_PANEL_SIZE_HIGH=22
 POSITION_PANEL_POS_Y=((MAX_Y-6)/2)
 POSITION_PANEL_POS_X=((MAX_X-4)-POSITION_PANEL_SIZE_WIDTH) 
 POSITION_MARGIN_TOP=2
+#----------path  of pos image----------------
+DRONE_IMAGEPATH_1="prototype_pos_logo_d01.txt"
+DRONE_IMAGE_1=trans_image(DRONE_IMAGEPATH_1)
+
+
+

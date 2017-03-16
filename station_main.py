@@ -17,10 +17,10 @@ def main():
     create_main_station()
     #-----------create position panel-----------
     create_main_position_panel()
-    create_sub_position_panel("01","T01","NAME01",("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
-    create_sub_position_panel("02","T02","NAME02",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
-    create_sub_position_panel("03","T03","NAME03",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
-    create_sub_position_panel("04","T04","NAME04",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
+    create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
+    create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
+    create_sub_position_panel("03","T03","NAME03","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
+    create_sub_position_panel("04","T04","NAME04","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
 
     running = True
     while(running):

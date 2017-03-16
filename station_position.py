@@ -3,6 +3,7 @@
 from unicurses import * 
 from make_color import *
 #declare for testing station_position.py
+#from ascii_image import *
 from station_init import *
 
 def main():
@@ -12,10 +13,10 @@ def main():
     #-------------------------------------------
     #-----------create position panel-----------
     create_main_position_panel()
-    create_sub_position_panel("01","T01","NAME01",("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
-    create_sub_position_panel("02","T02","NAME02",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
-    create_sub_position_panel("03","T03","NAME03",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
-    create_sub_position_panel("04","T04","NAME04",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
+    create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
+    create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
+    create_sub_position_panel("03","T03","NAME03",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
+    create_sub_position_panel("04","T04","NAME04",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
 
     running = True
     while(running):
@@ -50,7 +51,7 @@ def create_main_position_panel():
     ws_panel=new_panel(window_main_pos)
     move_panel(ws_panel,POSITION_MARGIN_TOP,POSITION_PANEL_POS_X)
 
-def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,conn_data,pos):
+def create_sub_position_panel(num_data,id_data,name_data,drone_image,batt_data,status_data,conn_data,pos):
     global POSITION_PANEL_SIZE_HIGH
     global POSITION_PANEL_SIZE_WIDTH
     global POSITION_PANEL_POS_Y
@@ -76,6 +77,18 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     waddstr(window_sub_slot,"NAME:"+name_data)
     wmove(window_sub_slot,4,1)
     whline(window_sub_slot,ACS_HLINE,18)
+
+    #-----------ascii image--------------------
+    if(drone_image!="EMPTY"):
+        wconvert_to_txtimage(window_sub_slot,5,2,drone_image)
+    elif(drone_image=="EMPTY"):
+        wmove(window_sub_slot,8,5)
+        waddstr(window_sub_slot,"-- EMPTY --")
+    else:
+        wmove(window_sub_slot,8,7)
+        waddstr(window_sub_slot,"ERROR")
+    #------------------------------------------
+     
     wmove(window_sub_slot,13,1)
     whline(window_sub_slot,ACS_HLINE,18)
     wmove(window_sub_slot,14,2)
@@ -83,7 +96,6 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     wmove(window_sub_slot,15,1)
     whline(window_sub_slot,ACS_HLINE,18)
     wmove(window_sub_slot,16,2)
-
     waddstr(window_sub_slot,status_data)
     wmove(window_sub_slot,16,16)
     if (status_data=="READY"):
@@ -124,15 +136,6 @@ def create_sub_position_panel(num_data,id_data,name_data,batt_data,status_data,c
     #-------------panel update stage-----------
     update_panels()
     doupdate()
-    
-def make_color(fg,bg):
-    global MAKE_COLOR_NUM
-
-    color_number = MAKE_COLOR_NUM
-    init_pair(color_number,fg,bg)
-    MAKE_COLOR_NUM +=1
-    
-    return MAKE_COLOR_NUM
 
 if(__name__=="__main__"):
     main()
