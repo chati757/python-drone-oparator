@@ -7,7 +7,7 @@ from station_init import *
 
 def main():
     
-    create_main_information_panel()
+    create_main_console_panel()
     
 
     running = True
@@ -21,15 +21,15 @@ def main():
 
     return 0
 
-def create_main_information_panel():
+def create_main_console_panel():
     #-------------station main slot panel-----------
     #total size width 80 high 22
-    window_main_info=newwin(INFORMATION_PANEL_SIZE_HIGH,INFORMATION_PANEL_SIZE_WIDTH,0,0)
+    window_main_info=newwin(CONSOLE_PANEL_SIZE_HIGH,CONSOLE_PANEL_SIZE_WIDTH,0,0)
     box(window_main_info)
     wmove(window_main_info,0,5)
-    waddstr(window_main_info," INFORMATION ",A_REVERSE)
+    waddstr(window_main_info," CONSOLE ",A_REVERSE)
     ws_panel=new_panel(window_main_info)
-    move_panel(ws_panel,INFORMATION_MARGIN_TOP,INFORMATION_PANEL_POS_X)
+    move_panel(ws_panel,CONSOLE_MARGIN_TOP,CONSOLE_PANEL_POS_X)
     update_panels()
     doupdate()
 

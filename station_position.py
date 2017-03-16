@@ -47,7 +47,7 @@ def create_main_position_panel():
     window_main_pos=newwin(POSITION_PANEL_SIZE_HIGH,POSITION_PANEL_SIZE_WIDTH,0,0)
     box(window_main_pos)
     wmove(window_main_pos,0,35)
-    waddstr(window_main_pos," POSITION ")
+    waddstr(window_main_pos," POSITION ",A_REVERSE)
     ws_panel=new_panel(window_main_pos)
     move_panel(ws_panel,POSITION_MARGIN_TOP,POSITION_PANEL_POS_X)
 

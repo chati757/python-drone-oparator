@@ -3,6 +3,8 @@
 from unicurses import *
 from station_init import *
 from station_position import *
+from station_info import *
+from station_console import *
 
 #-----------------main panel----------------
 MAIN_STATION_MARGIN_TOP=1
@@ -21,6 +23,10 @@ def main():
     create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
     create_sub_position_panel("03","T03","NAME03","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
     create_sub_position_panel("04","T04","NAME04","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
+    #-----------create station information-------
+    create_main_information_panel()
+    #-----------create station console-----------
+    create_main_console_panel()
 
     running = True
     while(running):
