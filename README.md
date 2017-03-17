@@ -1,8 +1,8 @@
 # PYTHON-DRONE-OPERATOR
 
-###WINDOW VERSION
+### WINDOW VERSION
 
-**library dependency and installation
+**library dependency and installation**
 
     pdcurses 
     
@@ -55,4 +55,4 @@
 
     cmd > wmic > exit
     
-###LINUX VERSION
+### LINUX VERSION
