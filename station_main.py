@@ -33,7 +33,8 @@ def main():
     create_main_loadout_panel()
     #-----------create station detail------------
     create_main_detail_panel()
-
+    
+    
     running = True
     while(running):
         key=getch()#don't forget setting window2 or window in this line

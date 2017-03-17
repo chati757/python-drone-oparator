@@ -16,7 +16,6 @@ def main():
         if(key==27):
             running = False
             break
-
     endwin() #for stop ncurses
 
     return 0
