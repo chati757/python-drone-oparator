@@ -27,24 +27,12 @@ def main():
     create_sub_position_panel("04","T04","NAME04","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
     #-----------create station information-------
     create_main_information_panel()
-    #-----------create station console-----------
-    create_main_console_panel()
     #-----------create station loadout-----------
     create_main_loadout_panel()
     #-----------create station detail------------
     create_main_detail_panel()
-    
-    
-    running = True
-    while(running):
-        key=getch()#don't forget setting window2 or window in this line
-        if(key==27):
-            running = False
-            break
-
-    endwin() #for stop ncurses
-
-    return 0
+    #-----------create station console-----------
+    create_main_console_panel()
 
 def draftwin(stdscr):
     global MAX_Y

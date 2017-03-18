@@ -9,8 +9,8 @@ stdscr = initscr() #start up screen and initalize ncurses
 #-----------determate default window---------------
 start_color()#default is white
 use_default_colors()
-noecho()#not show txt when typing
-curs_set(False)#not show cursor
+echo()#not show txt when typing
+curs_set(True)#not show cursor
 keypad(stdscr,True)#register arrow key 
 
 #-----------------initialize color themes----------
@@ -48,6 +48,11 @@ CONSOLE_PANEL_SIZE_HIGH=29
 CONSOLE_PANEL_POS_Y=((MAX_Y-6)/2)
 CONSOLE_PANEL_POS_X=4
 CONSOLE_MARGIN_TOP=(INFORMATION_PANEL_SIZE_HIGH+INFORMATION_MARGIN_TOP) #17
+CONSOLE_INNER_INFO_COL=3
+CONSOLE_INNER_INFO_ROW=2
+CONSOLE_INNER_CMD_COL=3
+CONSOLE_INNER_CMD_ROW=(CONSOLE_PANEL_SIZE_HIGH-2)#27
+CONSOLE_COUNT_LINE=CONSOLE_INNER_INFO_ROW
 
 #----------loadout panel layout-----------
 LOADOUT_PANEL_SIZE_WIDTH=40
