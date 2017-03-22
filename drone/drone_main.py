@@ -3,10 +3,10 @@
 import threading
 import socket #client side
 
-register():
 #register stage get from database and GPIO setting
 
 main():
+print("in main")
 #------------------main thread worker---------------------
 # 2 mode [store in mode_info database]
 # 1.full-automation mode (start routine by itself) 
@@ -53,24 +53,30 @@ main():
 
 #-------------------main thread function--------------------
 reconnection():
+print("in reconnection")
 #reconnection 5 time if more then 
     #if thread separated or thread more then 1 run reconnection again
     #else os.exit() and wait for ssh and reboot again
 
 #abount database 
 update_routine():
+print("in update_routine")
 #drone_routine.py
 get_routine():
+print("in get_routine")
 #drone_routine.py
 #-------------------daemon thread function--------------------
 auto_pilot():
+print("in auto_pilot")
 #loop if global value =1 break and kill thread this loop and go man_control
 #get routine
 
 manual_control():
+print("in man_control")
 #loop if global value =0 break and kill thread this loop and go auto_pilot
 
 check_connection():
+print("check_connection")
 #ping server and check server response
 
 if(__name__=="__main__"):
