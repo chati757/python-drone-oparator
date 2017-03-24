@@ -2,19 +2,20 @@
 #-*-coding: utf-8 -*-
 import threading
 import socket #client side
+import time
+
+from drone_init import *
 
 #register stage get from database and GPIO setting
 
-main():
-print("in main")
-#------------------main thread worker---------------------
-# 2 mode [store in mode_info database]
-# 1.full-automation mode (start routine by itself) 
-# 2.semi-automation mode (start routine by myself) 
+def main():
+    global lockthread
+    print("in main")
+#------------------main thread worker--------------------- 
 
 #check connection before start 
-    #if cannot connect run reconnection()
-
+    #if cannot connect ,run connection()
+connection()
 #socket update routine from c&c server or http server (request tcp and receive json format)
 
 #get mode_info from database
@@ -52,32 +53,77 @@ print("in main")
 
 
 #-------------------main thread function--------------------
-reconnection():
-print("in reconnection")
-#reconnection 5 time if more then 
-    #if thread separated or thread more then 1 run reconnection again
+def connection():
+    global CON_COUNT
+    try:
+        s = socket.socket()
+        s.connect((HOST_S,POST_S))
+        CON_COUNT = 0
+        message = "empty"
+        while message != '':
+            data = s.recv(3072)
+            print('station response : '+data_res)
+            message = raw_input("->")
+            s.send(message)
+        s.close
+    except IOError as e:
+        if(e.errno==10061):
+            print("cannot connect , trying..["+CON_COUNT+"]")
+            reconnection()
+        else
+            print(e)
+
+def reconnection():
+    #reconnection 5 time if more then 
+    #if thread separated or thread more then 1 run reconnection again every 10 seconds
     #else os.exit() and wait for ssh and reboot again
-
+    if(threading.active_count()>1 or CON_COUNT<=5):
+        CON_COUNT+=1
+        connection()
+    else
+        print("connection is lost , wait for reboot form user.")
+        os.exit()
+        
 #abount database 
-update_routine():
-print("in update_routine")
+def update_routine():
+    print("in update_routine")
+
 #drone_routine.py
-get_routine():
-print("in get_routine")
-#drone_routine.py
+def get_routine():
+    print("in get_routine")
+    #drone_routine.py
 #-------------------daemon thread function--------------------
-auto_pilot():
-print("in auto_pilot")
-#loop if global value =1 break and kill thread this loop and go man_control
-#get routine
+def auto_pilot():
+    global mode,lockthread
+    lockthread.acquire()
+    try:
+        while(mode==0):
+            print("in auto_pilot")
+            time.sleep(1)
+            pass
+        manual_control()
+    finally:
+        lockthread.release()
+    #loop if global value =1 break and kill thread this loop and go man_control
+    #get routine
 
-manual_control():
-print("in man_control")
-#loop if global value =0 break and kill thread this loop and go auto_pilot
+def manual_control():
+    global mode,lockthread
+    lockthread.acquire()
+    try:
+        while(mode==1):
+            print("in man_control")
+            time.sleep(1)
+            pass
+        auto_pilot()
+    finally:
+        lockthread.release()
+    #loop if global value =0 break and kill thread this loop and go auto_pilot
 
-check_connection():
-print("check_connection")
-#ping server and check server response
+def check_connection():
+    print("check_connection")
+    #ping server and check server response
+
 
 if(__name__=="__main__"):
-    main()
+    #main()
