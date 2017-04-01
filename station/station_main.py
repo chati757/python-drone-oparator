@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #-*-coding: utf-8 -*-
+import threading
 from unicurses import *
 from station_init import *
 from station_position import *
@@ -20,19 +21,22 @@ def main():
     #-----------create main station-------------
     create_main_station()
     #-----------create position panel-----------
+    #thread station
     create_main_position_panel()
     create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
     create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
     create_sub_position_panel("03","T03","NAME03","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
     create_sub_position_panel("04","T04","NAME04","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
     #-----------create station information-------
+    #thread info
     create_main_information_panel()
+    #-----------create station console-----------
+    #thread console
+    create_main_console_panel()
     #-----------create station loadout-----------
     create_main_loadout_panel()
     #-----------create station detail------------
     create_main_detail_panel()
-    #-----------create station console-----------
-    create_main_console_panel()
 
 def draftwin(stdscr):
     global MAX_Y
