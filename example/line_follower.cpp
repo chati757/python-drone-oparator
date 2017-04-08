@@ -1,3 +1,7 @@
+//read digital
+//write digital
+//read analog
+
 #include <AFMotor.h>    //Adafruit Motor Shield Library. First you must download and install AFMotor library
 #include <QTRSensors.h> //Pololu QTR Sensor Library. First you must download and install QTRSensors library
   

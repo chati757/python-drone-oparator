@@ -13,10 +13,7 @@ def main():
     #-------------------------------------------
     #-----------create position panel-----------
     create_main_position_panel()
-    create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
-    create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
-    create_sub_position_panel("03","T03","NAME03",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
-    create_sub_position_panel("04","T04","NAME04",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
+    create_mainsub_position_panel()
 
     running = True
     while(running):
@@ -50,6 +47,12 @@ def create_main_position_panel():
     waddstr(window_main_pos," POSITION ",A_REVERSE)
     ws_panel=new_panel(window_main_pos)
     move_panel(ws_panel,POSITION_MARGIN_TOP,POSITION_PANEL_POS_X)
+
+def create_mainsub_position_panel():
+    create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
+    create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)
+    create_sub_position_panel("03","T03","NAME03","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",40)
+    create_sub_position_panel("04","T04","NAME04","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",60)
 
 def create_sub_position_panel(num_data,id_data,name_data,drone_image,batt_data,status_data,conn_data,pos):
     global POSITION_PANEL_SIZE_HIGH

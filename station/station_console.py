@@ -33,16 +33,23 @@ def create_main_console_panel():
         if (choice == "man" or choice == "manual" or choice == "help"):
             addstring(window_main_console,"[MAIN] command :")
             addstring(window_main_console,"")
-            addstring(window_main_console,"man [manual] - show manual")
-            addstring(window_main_console,"ver [version] - show version")
-            addstring(window_main_console,"exit - close program")
+            addstring(window_main_console," man [manual] - show manual")
+            addstring(window_main_console," ver [version] - show version")
+            addstring(window_main_console," exit - close program")
+            addstring(window_main_console,"")
+            addstring(window_main_console,"[DRONE] command :")
+            addstring(window_main_console,"")
+            addstring(window_main_console," DRONE REGISTER :")
+            addstring(window_main_console," dr reg new <new drone id> - create data drone for station")
+            addstring(window_main_console," dr reg edit <drone id> - edit drone database")
+            addstring(window_main_console," dr reg del <drone id> - remove drone form database")
             addstring(window_main_console,"")
             addstring(window_main_console,"[SERVER CONNECTION] command :")
             addstring(window_main_console,"")
             addstring(window_main_console,"[LOADOUT] command :")
 
         elif (choice == "ver" or choice == "version"):
-            addstring(window_main_console,"PYDROBOT VERSION : BETA")
+            addstring(window_main_console,"PYDROBOT VERSION : ALPHA")
 
         elif (choice == "exit"):
             showbox(window_main_console," CONSOLE ",5)

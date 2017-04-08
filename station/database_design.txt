@@ -1,0 +1,38 @@
+station database design
+basic sensor
+    alldrone:basicsensor-[set type]
+    trackingline-front,avoidsensor-front,st-camera
+drone w01
+    -drone:w01[hash type]
+        id=w01
+        name=filly
+        pos_slot=01
+        [before turnoff]lastbat=[0-100]
+        [before turnoff]laststatus=[loading,working,ready,empty,maintenance]
+        details=drone for filing ab fertilizer,Have loadout ab filler , 
+        ec meter sensor
+    -drone:w01:loadout[set type]
+        ec-meter,abfiller
+    -drone:w01:routine:queue[list type]
+        ex.goto nX1,active pX1
+    -drone:w01:routine:success[list type]
+        ex.goto nX4,active pX4
+    -drone:w01:routine:cancel[list type]
+        ex.goto nX8,active pX8
+
+drone m01
+    -drone:m01[hash type]
+        id=m01
+        name=moose
+        pos_solt=02
+        [before turnoff]lastbat=[0-100]
+        [before turnoff]laststatus=[loading,working,ready,empty,maintenance] 
+        details=drone for move plant object and harvesting 
+    -drone:m01:loadout[set type]
+        gripper
+    -drone:m01:routine:queue[list type]
+        ex.goto nX1,active pX1
+    -drone:m01:routine:success[list type]
+        ex.goto nX4,active pX4
+    -drone:m01:routine:cancel[list type] 
+        ex.goto nX8,active pX8  

@@ -10,9 +10,9 @@ content_line = []
 
 def main():
     create_main_information_panel()
-    
+    endwin()
 
-def create_main_information_panel():
+def create_main_information_panel(message=""):
     #-------------station main slot panel-----------
     #total size width 80 high 22
     window_main_info=newwin(INFORMATION_PANEL_SIZE_HIGH,INFORMATION_PANEL_SIZE_WIDTH,0,0)
@@ -21,12 +21,16 @@ def create_main_information_panel():
     ws_panel=new_panel(window_main_info)
     move_panel(ws_panel,INFORMATION_MARGIN_TOP,INFORMATION_PANEL_POS_X)
     
-    running = True
+    if(message!=""):
+        addstring(window_main_info,message)
+        time.sleep(0.5)
+    '''
+    #testing feed information
     for i in range(20):
         addstring(window_main_info,"testing:"+str(i))
-        time.sleep(1)
-    
-    endwin() #for stop ncurses
+        time.sleep(0.5)
+    '''
+    #endwin() #for stop ncurses comment it's because not want cursor to reposition
     
 def showbox(window,txt,shiftcenter):
     box(window)
