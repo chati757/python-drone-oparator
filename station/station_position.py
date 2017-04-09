@@ -47,7 +47,7 @@ def create_main_position_panel():
     waddstr(window_main_pos," POSITION ",A_REVERSE)
     ws_panel=new_panel(window_main_pos)
     move_panel(ws_panel,POSITION_MARGIN_TOP,POSITION_PANEL_POS_X)
-
+    
 def create_mainsub_position_panel():
     create_sub_position_panel("01","T01","NAME01",DRONE_IMAGE_1,("xxx"+" %"),"MAINTENANCE","OFFLINE",0)
     create_sub_position_panel("02","T02","NAME02","EMPTY",("xxx"+" %"),"MAINTENANCE","OFFLINE",20)

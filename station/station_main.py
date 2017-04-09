@@ -22,7 +22,7 @@ def main():
     #-----------create main station-------------
     create_main_station()
     #-----------create position panel-----------
-    create_main_position_panel()
+    #create_mainsub_position_panel()
     #thread sub position panel
     th_mspos=threading.Thread(target=create_mainsub_position_panel,name="thread mainsub position")
     #-----------create station information-------

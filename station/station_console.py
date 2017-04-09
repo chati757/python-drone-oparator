@@ -9,11 +9,7 @@ def main():
     
     create_main_console_panel()
     
-
 def create_main_console_panel():
-    echo()#show txt when typing
-    curs_set(True)#not show cursor
-
     global CONSOLE_COUNT_LINE
     #-------------station main slot panel-----------
     #total size width 80 high 22
@@ -21,9 +17,12 @@ def create_main_console_panel():
     showbox(window_main_console," CONSOLE ",5)
     ws_panel=new_panel(window_main_console)
     move_panel(ws_panel,CONSOLE_MARGIN_TOP,CONSOLE_PANEL_POS_X)
-
+    
     running = True
     while(running):
+        if (wgetch(window_main_console)!=""):
+            echo()
+            curs_set(True)
         choice = curses_raw_input(window_main_console,CONSOLE_INNER_CMD_ROW,CONSOLE_INNER_CMD_COL, "command : ").lower()
         if (choice!=""):
            #mvwaddstr(window,2,3,"in clear")
