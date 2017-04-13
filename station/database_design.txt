@@ -1,6 +1,6 @@
 station database design
 basic sensor
-    drone:basicsensor-[set type]
+    drone:basicsensor-[keys type]
     trackingline-front,avoidsensor-front,st-camera
 drone w01
     -drone:w01[hash type]
